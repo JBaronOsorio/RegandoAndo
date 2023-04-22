@@ -1,0 +1,83 @@
+// C++ code
+//
+int Temperatura = 0;
+
+
+void setup()
+{
+  Temperatura = 0;
+  Serial.begin(9600); //inicializar el sensor.
+}
+void loop()
+{
+  Temperatura = analogRead(A0); // lectura de temperatura en voltios 
+  //Serial.println(Temperatura);
+  delay(3000);
+  float Temperaturav = Temperatura*5000.0/1023.0; // temperatura mini voltios 
+  //Serial.println(Temperaturag);
+  float Temperaturag = (Temperaturav - 500.0) / 10.0; // temperatura en grados 
+  Serial.println(Temperaturag);
+  if (Temperaturag > 25){
+    Serial.print(Temperaturag); 
+    Serial.println(" la temperatura es demasiado alta");  
+  }
+  else if (Temperaturag < 18){
+    Serial.print(Temperaturag); 
+    Serial.println(" la temperatura es demasiado baja"); 
+  
+  }
+} 
+// C++ code
+//
+const int pot=0;//Se declara el potenciometro en A0
+int humedad; //Valor de salida del potenciometro
+
+void setup() {
+  
+  Serial.begin(9600);
+   pinMode(7,OUTPUT);  //LED
+   pinMode(8,OUTPUT);  //MOTOR SIMULADOR DE RIEGO 
+}
+
+void loop() {
+  
+  // Valor del potenciometro
+   humedad = analogRead (pot) / 10; 
+  if(humedad<80){
+  digitalWrite(8, HIGH);
+    digitalWrite(7,HIGH);
+   }    
+  else if(humedad>=80){
+    digitalWrite(8, LOW);
+    digitalWrite(7,LOW);}   
+   
+    
+   // Envia el dato al puerto serial
+  Serial.print("Humedad:"); Serial.print(humedad); Serial.println("%");
+  delay(2000);  
+  
+}
+// C++ code
+//
+int sensor_humedad = 0;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+  pinMode(12, OUTPUT);
+  pinMode(6, OUTPUT);
+}
+
+void loop()
+{
+  sensor_humedad = analogRead(A0);
+  Serial.println(sensor_humedad);
+  if (sensor_humedad < 21) {
+    digitalWrite(12, HIGH);
+    digitalWrite(6, HIGH);
+  } else {
+    digitalWrite(12, LOW);
+    digitalWrite(6, LOW);
+  }
+  delay(10); 
