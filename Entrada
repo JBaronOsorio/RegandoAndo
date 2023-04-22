@@ -1,0 +1,133 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class Entrada extends JPanel implements ActionListener {
+    private JLabel lOpciones;
+    private JTextField tTemp;
+    private JLabel lCrearPlanta;
+    private JComboBox cTipoPlanta;
+    private JLabel jcomp5;
+    private JLabel lCantidadDeAgua;
+    private JComboBox cCantidad;
+    private JLabel lNombrePLanta;
+    private JTextField tNombre;
+    private JButton bConfirmar;
+    private JLabel lDatos;
+    private JLabel lT;
+    private JLabel lH;
+    private JLabel lL;
+    private JLabel lTemporizador;
+    private JTextField tHumedad;
+    private JTextField tLuminosidad;
+    private JTextField tTimer;
+    private JButton bEstablecer;
+    Planta katara;
+
+    public Entrada() {
+        //construct preComponents
+        String[] cTipoPlantaItems = {"Decorativa", "Cultivo"};
+        String[] cCantidadItems = {"Poca", "Moderada", "Mucha"};
+        this.katara = katara;
+
+        //construct components
+        lOpciones = new JLabel ("Opciones");
+        tTemp = new JTextField (5);
+        lCrearPlanta = new JLabel ("Crear o cambiar planta");
+        cTipoPlanta = new JComboBox (cTipoPlantaItems);
+        jcomp5 = new JLabel ("Tipo de planta");
+        lCantidadDeAgua = new JLabel ("Cantidad de agua al regar");
+        cCantidad = new JComboBox (cCantidadItems);
+        lNombrePLanta = new JLabel ("Nombre de la planta");
+        tNombre = new JTextField (5);
+        bConfirmar = new JButton ("Confirmar");
+        lDatos = new JLabel ("Establecer datos actualizados");
+        lT = new JLabel ("Temperatura");
+        lH = new JLabel ("Humedad");
+        lL = new JLabel ("Luminocidad");
+        lTemporizador = new JLabel ("Temporizador");
+        tHumedad = new JTextField (5);
+        tLuminosidad = new JTextField (5);
+        tTimer = new JTextField (5);
+        bEstablecer = new JButton ("Estasblecer");
+
+        //adjust size and set layout
+        setPreferredSize (new Dimension (659, 607));
+        setLayout (null);
+
+        //add components
+        add (lOpciones);
+        add (tTemp);
+        add (lCrearPlanta);
+        add (cTipoPlanta);
+        add (jcomp5);
+        add (lCantidadDeAgua);
+        add (cCantidad);
+        add (lNombrePLanta);
+        add (tNombre);
+        add (bConfirmar);
+        bConfirmar.addActionListener(this);
+        add (lDatos);
+        add (lT);
+        add (lH);
+        add (lL);
+        add (lTemporizador);
+        add (lTemporizador);
+        add (tHumedad);
+        add (tLuminosidad);
+        add (tTimer);
+        add (bEstablecer);
+        bEstablecer.addActionListener(this);
+
+        //set component bounds (only needed by Absolute Positioning)
+        lOpciones.setBounds (290, 40, 100, 25);
+        tTemp.setBounds (515, 200, 100, 25);
+        lCrearPlanta.setBounds (85, 120, 145, 25);
+        cTipoPlanta.setBounds (180, 180, 100, 25);
+        jcomp5.setBounds (40, 180, 100, 25);
+        lCantidadDeAgua.setBounds (10, 240, 155, 25);
+        cCantidad.setBounds (180, 240, 100, 25);
+        lNombrePLanta.setBounds (20, 300, 125, 25);
+        tNombre.setBounds (180, 300, 100, 25);
+        bConfirmar.setBounds (105, 355, 100, 25);
+        lDatos.setBounds (410, 120, 190, 30);
+        lT.setBounds (385, 195, 100, 25);
+        lH.setBounds (395, 240, 100, 25);
+        lL.setBounds (385, 280, 100, 25);
+        lTemporizador.setBounds (385, 320, 100, 25);
+        tHumedad.setBounds (520, 235, 100, 25);
+        tLuminosidad.setBounds (520, 280, 100, 25);
+        tTimer.setBounds (520, 320, 100, 25);
+        bEstablecer.setBounds (445, 375, 110, 25);
+    }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == bConfirmar) {
+            lOpciones.setText("1");
+            Procesamiento agregar = new Procesamiento();
+            agregar.agregarplanta(cTipoPlanta.getSelectedItem().toString(),cCantidad.getSelectedItem().toString(),tNombre.getText().toString());
+            Planta katara = new Planta();
+            String n = katara.getNombre();
+            lCantidadDeAgua.setText(n);
+            
+        }
+        if (e.getSource() == bEstablecer) {
+            lOpciones.setText("2");
+            Procesamiento establecer = new Procesamiento();
+            String n1 = tTemp.getText();
+            String n2 = tHumedad.getText();
+            String n3 = tLuminosidad.getText();
+            String n4 = tTimer.getText();
+            int tempe = Integer.parseInt(n1);
+            int humed = Integer.parseInt(n2);
+            int lumi = Integer.parseInt(n3);
+            int tim = Integer.parseInt(n4);
+            establecer.establecerSensores(tempe,humed,lumi,tim);
+            
+        }
+       
+    }
+
+
+    
+}
