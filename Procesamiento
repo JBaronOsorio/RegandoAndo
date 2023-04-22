@@ -1,0 +1,51 @@
+
+public class Procesamiento{
+    
+    
+    
+    public  void agregarplanta(String tipo, String cantidad, String nombre){
+        Planta katara = new Planta();
+        
+        katara.setTipo(tipo);
+        katara.setCantidadRiego(cantidad);
+        katara.setNombre(nombre);
+    }
+    
+    public  void establecerSensores(int temperatura, int humedad, int luminosidad, int timer){
+        Planta katara = new Planta();
+        
+        katara.setTemperatura(temperatura);
+        katara.setHumedad(humedad);
+        katara.setLuminosidad(luminosidad);
+        katara.setTimer(timer);
+    }
+    
+   
+    
+    public String checkTemperatura(int temperatura){
+        if ((temperatura >= 10) ){
+            return "Optimo";
+        }
+        else{
+            return "No optimo";
+        }
+    }
+    
+    public String checkHumedad(int humedad){
+        if ((humedad >= 10) && (humedad <= 20)){
+            return "Optimo";
+        }
+        else{
+            return "No optimo";
+        }
+    }
+    
+    public String checkLuminosidad(int luminosidad){
+        if ((luminosidad >= 10) && (luminosidad <= 20)){
+            return "Optimo";
+        }
+        else{
+            return "No optimo";
+        }
+    }
+}
