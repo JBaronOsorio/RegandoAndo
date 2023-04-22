@@ -1,0 +1,104 @@
+
+public class Planta{
+
+    // tipo de la planta (decorativa o cultivo)
+    private String tipo;
+    
+    //nombre
+    private String nombre;
+
+   //cantidad de agua que dropea el Katara (poca media o abundante)
+    private String cantidadRiego;
+  
+   // timepo independiente de cada cuanto quiere el usuario que se riegue la planta
+    private int timer;
+    
+    //Temperatura de la planta
+    private int temperatura;
+    
+    //Tumedad de la planta
+    private int humedad;
+    
+    // Luminosidad de la planta
+    private int luminosidad;
+
+    
+    
+  
+    
+    // funcion para obtener el tipo de la planta (decorativa o cultivo)
+    public String getTipo(){
+        return tipo;
+    }
+    
+    // funcion para obtener el nombre
+    public String getNombre(){
+        return nombre;
+    }
+    
+  // funcion para obtener la cantidad de agua que dropea katara
+    public String getCantidadRiego(){
+        return cantidadRiego;
+    }
+
+    // funcion para obtener el timer de la planta
+     public int getTimer(){
+        return timer;
+    }
+    
+    // funcion para obtener la temperatura
+     public int getTemperatura(){
+        return temperatura;
+    }
+    
+    // funcion para obtener la humedad
+     public int getHumedad(){
+        return humedad;
+    }
+    
+    // funcion para obtener la luminosidad
+     public int getLuminosidad(){
+        return luminosidad;
+    }
+
+    // funcion para establecer un tipo
+    public void setTipo(String newTipo){
+        this.tipo = newTipo;
+    }
+    
+    // funcion para establecer un nombre
+    public void setNombre(String newNombre){
+        this.nombre = newNombre;
+    }
+
+    // funcion para establecer cantidad de riego 
+    public void setCantidadRiego(String newCantidadRiego){
+        this.cantidadRiego = newCantidadRiego;
+    }
+
+    //funcion para establecer timer 
+    
+    public void setTimer(int newTimer ){
+        this.timer = newTimer;
+    }
+    
+    //funcion para establecer temperatura
+    
+    public void setTemperatura(int newTemperatura ){
+        this.temperatura = newTemperatura;
+    }
+    
+    //funcion para establecer humedad
+    
+    public void setHumedad(int newHumedad ){
+        this.humedad = newHumedad;
+    }
+    
+    //funcion para establecer luminosidad 
+    
+    public void setLuminosidad(int newLuminosidad ){
+        this.luminosidad = newLuminosidad;
+    }
+    
+    
+}
