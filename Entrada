@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -23,13 +24,17 @@ public class Entrada extends JPanel implements ActionListener {
     private JTextField tLuminosidad;
     private JTextField tTimer;
     private JButton bEstablecer;
-    Planta katara;
+    public static Planta plantita;
+    
+    public Planta getPlanta(){  
+        return plantita;
+    }
 
     public Entrada() {
         //construct preComponents
         String[] cTipoPlantaItems = {"Decorativa", "Cultivo"};
         String[] cCantidadItems = {"Poca", "Moderada", "Mucha"};
-        this.katara = katara;
+        
 
         //construct components
         lOpciones = new JLabel ("Opciones");
@@ -45,12 +50,12 @@ public class Entrada extends JPanel implements ActionListener {
         lDatos = new JLabel ("Establecer datos actualizados");
         lT = new JLabel ("Temperatura");
         lH = new JLabel ("Humedad");
-        lL = new JLabel ("Luminocidad");
+        lL = new JLabel ("Luminosidad");
         lTemporizador = new JLabel ("Temporizador");
         tHumedad = new JTextField (5);
         tLuminosidad = new JTextField (5);
         tTimer = new JTextField (5);
-        bEstablecer = new JButton ("Estasblecer");
+        bEstablecer = new JButton ("Establecer");
 
         //adjust size and set layout
         setPreferredSize (new Dimension (659, 607));
@@ -103,16 +108,14 @@ public class Entrada extends JPanel implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bConfirmar) {
-            lOpciones.setText("1");
+            
             Procesamiento agregar = new Procesamiento();
-            agregar.agregarplanta(cTipoPlanta.getSelectedItem().toString(),cCantidad.getSelectedItem().toString(),tNombre.getText().toString());
-            Planta katara = new Planta();
-            String n = katara.getNombre();
-            lCantidadDeAgua.setText(n);
+            plantita = agregar.agregarplanta(cTipoPlanta.getSelectedItem().toString(),cCantidad.getSelectedItem().toString(),tNombre.getText().toString());
+           
+            
             
         }
         if (e.getSource() == bEstablecer) {
-            lOpciones.setText("2");
             Procesamiento establecer = new Procesamiento();
             String n1 = tTemp.getText();
             String n2 = tHumedad.getText();
@@ -122,7 +125,8 @@ public class Entrada extends JPanel implements ActionListener {
             int humed = Integer.parseInt(n2);
             int lumi = Integer.parseInt(n3);
             int tim = Integer.parseInt(n4);
-            establecer.establecerSensores(tempe,humed,lumi,tim);
+            establecer.establecerSensores(plantita,tempe,humed,lumi,tim);
+           
             
         }
        
