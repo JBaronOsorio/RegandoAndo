@@ -2,28 +2,26 @@
 public class Procesamiento{
     
     
-    
-    public  void agregarplanta(String tipo, String cantidad, String nombre){
-        Planta katara = new Planta();
-        
-        katara.setTipo(tipo);
-        katara.setCantidadRiego(cantidad);
-        katara.setNombre(nombre);
+    // funcion para crear o modificar tu planta 
+    public  Planta agregarplanta(String tipo, String cantidad, String nombre){
+        Planta planta = new Planta();
+        planta.setTipo(tipo);
+        planta.setCantidadRiego(cantidad);
+        planta.setNombre(nombre);
+        return planta;
     }
     
-    public  void establecerSensores(int temperatura, int humedad, int luminosidad, int timer){
-        Planta katara = new Planta();
-        
-        katara.setTemperatura(temperatura);
-        katara.setHumedad(humedad);
-        katara.setLuminosidad(luminosidad);
-        katara.setTimer(timer);
+    public void establecerSensores(Planta planta,int temperatura, int humedad, int luminosidad, int timer){
+        planta.setTemperatura(temperatura);
+        planta.setHumedad(humedad);
+        planta.setLuminosidad(luminosidad);
+        planta.setTimer(timer);
     }
     
    
     
     public String checkTemperatura(int temperatura){
-        if ((temperatura >= 10) ){
+        if ((temperatura >= 10 && (temperatura <= 25)) ){
             return "Optimo";
         }
         else{
@@ -32,7 +30,7 @@ public class Procesamiento{
     }
     
     public String checkHumedad(int humedad){
-        if ((humedad >= 10) && (humedad <= 20)){
+        if (humedad >= 500) {
             return "Optimo";
         }
         else{
@@ -41,7 +39,7 @@ public class Procesamiento{
     }
     
     public String checkLuminosidad(int luminosidad){
-        if ((luminosidad >= 10) && (luminosidad <= 20)){
+        if ((luminosidad >= 600) && (luminosidad <= 3000)){
             return "Optimo";
         }
         else{
