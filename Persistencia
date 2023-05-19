@@ -1,0 +1,41 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class ModuloPersistencia
+{
+    
+    public static void guardar(Planta plantita){
+        File f = new File("RegistroSensores.txt");
+        FileWriter writer = null;
+        PrintWriter pw = null;
+        
+        // File creation
+        if (!f.exists()) {
+            try{
+                f.createNewFile();
+            }catch(IOException exception){
+                System.err.println("Error guardando los sensores");
+            }
+        }
+        try{
+            writer = new FileWriter("RegistroSensores.txt",true);
+            pw = new PrintWriter(writer);
+            pw.println("La temperatura de: "+plantita.getNombre()+" es "+plantita.getTemperatura());
+            pw.println("La humedad de: "+plantita.getNombre()+" es "+plantita.getHumedad());
+            pw.println("La Luminosidad de: "+plantita.getNombre()+" es "+plantita.getLuminosidad());
+        }catch(IOException exception){
+                System.err.println("Error abriendo el archivo");
+        }finally {
+           try {
+               //Closing the file
+           if (null != writer)
+              writer.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+}
